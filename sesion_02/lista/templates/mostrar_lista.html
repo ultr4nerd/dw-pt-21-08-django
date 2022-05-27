@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1>Listas de {{ nombre }}</h1>
+  <a href="{% url 'lista:mostrar_listas' %}">Volver</a>
+  <ul>
+    {% for producto in lista %}
+    <li>{{ producto }}</li>
+    {% endfor %}
+  </ul>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="name-id" class="form-label">Nuevo producto:</label>
+      <input type="text" class="form-control" id="name-id" name="producto" autofocus />
+    </div>
+    <button type="submit" class="btn btn-primary">Añadir</button>
+  </form>
+</div>
+{% endblock content %}

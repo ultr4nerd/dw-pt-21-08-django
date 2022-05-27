@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  {% if error %}
+  <div class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+  {% endif %}
+
+  <h1>Crear lista</h1>
+
+  <form action="{% url 'lista:crear_lista' %}" method="post">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+      <label for="name-id" class="form-label">Nombre de la lista:</label>
+      <input type="text" class="form-control" id="name-id" name="nombre" />
+    </div>
+    <button type="submit" class="btn btn-primary">Crear</button>
+  </form>
+</div>
+{% endblock content %}

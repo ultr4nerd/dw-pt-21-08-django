@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1>Listas de compras</h1>
+  <a href="{% url 'lista:crear_lista' %}" type="button" class="btn btn-primary my-3">Crear lista</a>
+  {% if not listas %}
+    <p>No hay listas, crea una :)</p>
+  {% else %}
+    <ul>
+      {% for lista in listas %}
+        <li>{{ lista }} | <a href="{% url 'lista:mostrar_lista' lista %}">Ver</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+{% endblock content %}

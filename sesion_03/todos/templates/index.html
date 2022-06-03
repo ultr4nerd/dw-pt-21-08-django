@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODOS</title>
+</head>
+<body>
+<h1>TODOS</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="new_todo" />
+    <button type="submit">Crear</button>
+</form>
+
+<ul>
+    {% for todo in todos %}
+        <li>{{ todo }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

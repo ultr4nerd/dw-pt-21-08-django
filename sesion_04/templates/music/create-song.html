@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Crear canción</title>
+{% endblock title %}
+
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Crear canción</h1>
+      
+      <form method="post">
+        {% csrf_token %}
+        <div class="field">
+          <label class="label">Título:</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Hotel California..." name="title" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="artist-id" class="label">Artista:</label>
+          <div class="control">
+            <div class="select">
+              <select name="artist_id" id="artist-id">
+                <option>-----------</option>
+                {% for artist in artists %}
+                <option value="{{ artist.id }}">{{ artist.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="album-id" class="label">Album:</label>
+          <div class="control">
+            <div class="select">
+              <select name="album_id" id="album-id">
+                <option>-----------</option>
+                {% for album in albums %}
+                <option value="{{ album.id }}">{{ album.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="field is-grouped mt-3">
+          <div class="control">
+            <button type="submit" class="button is-link">Crear</button>
+          </div>
+          <div class="control">
+            <button type="reset" class="button is-link is-light">Reiniciar</button>
+          </div>
+        </div>
+
+      </form>      
+    </div>
+  </section>
+{% endblock content %}
+

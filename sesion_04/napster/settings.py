@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todos',
     'music',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -102,3 +103,8 @@ STATICFILES_DIRS = [
 # Default primary key field type
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Authentication
+
+LOGIN_URL = "users:login"

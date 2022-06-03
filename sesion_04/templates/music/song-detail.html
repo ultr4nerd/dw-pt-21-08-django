@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Canción</title>
+{% endblock title %}
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Canción</h1>
+      <div class="content">
+        <ul>
+          <li>Título: {{ song.title }}</li>
+          <li>Artista: {{ song.artist.name }}</li>
+          <li>Álbum: {{ song.album.name }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
+

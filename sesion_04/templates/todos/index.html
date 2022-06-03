@@ -1,29 +1,51 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <title>TODOS</title>
-</head>
-<body>
-<h1>TODOS</h1>
 
-<form method="post">
-    {% csrf_token %}
-    <input type="text" name="new_todo" />
-    <button type="submit">Crear</button>
-</form>
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock css %}
 
-<ul>
-    {% for todo in todos %}
-        <li>{{ todo }}</li>
-    {% endfor %}
-</ul>
+{% block title %}
+<title>TODOS</title>
+{% endblock title %}
 
+{% block content %}
+<section class="hero is-black">
+    <div class="hero-body">
+      <h1 class="title">
+        TODOs
+      </h1>
+      <p class="subtitle">
+        No vuelvas a olvidar hacer algo
+      </p>
+    </div>
+</section>
 
+<section class="section">
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="field">
+                <label class="label">Contenido:</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Lavar los platos..." name="new_todo" />
+                </div>
+            </div>
+            <button  class="button is-link" type="submit">Crear</button>
+        </form>
+        
+        <div class="content">
+            <ul>
+                {% for todo in todos %}
+                    <li>{{ todo }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block javascript %}
 <script src="{% static 'js/index.js' %}"></script>
-</body>
-</html>
+{% endblock javascript %}
+

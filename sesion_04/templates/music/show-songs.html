@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Música</title>
+{% endblock title %}
+
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Canciones</h1>
+      <div class="content">
+        <ul>
+          {% for song in songs %}
+          <li>
+            <a href="{% url 'music:song_detail' song.pk %}">{{ song.title }}</a>
+            de {{ song.artist.name }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
+

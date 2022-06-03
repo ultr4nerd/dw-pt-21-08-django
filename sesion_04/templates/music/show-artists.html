@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Artistas</title>
+{% endblock title %}
+
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Artistas</h1>
+      <div class="content">
+        <ul>
+          {% for artist in artists %}
+          <li>{{ artist.name }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
+

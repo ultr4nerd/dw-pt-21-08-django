@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Crear artista</title>
+{% endblock title %}
+
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Crear artista</h1>
+      
+      <form method="post">
+        {% csrf_token %}
+        <div class="field">
+          <label class="label">Nombre:</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Placebo" name="name" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Cumpleaños</label>
+          <div class="control">
+            <input class="input" type="date" placeholder="21-12-1998" name="birthday" />
+          </div>
+        </div>
+
+        <div class="field is-grouped mt-3">
+          <div class="control">
+            <button type="submit" class="button is-link">Crear</button>
+          </div>
+          <div class="control">
+            <button type="reset" class="button is-link is-light">Reiniciar</button>
+          </div>
+        </div>
+
+      </form>      
+    </div>
+  </section>
+{% endblock content %}
+

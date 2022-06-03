@@ -1,0 +1,26 @@
+{% if request.user.is_authenticated %}
+  <nav class="navbar is-black">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{% url 'music:show_songs' %}">
+        Napster
+      </a>
+    </div>
+
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <p>@{{ request.user.username }}</p>
+        </div>
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <a class="button is-danger" href="{% url 'users:logout' %}">
+                <span>Cerrar sesión</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+{% endif %}

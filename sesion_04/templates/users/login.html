@@ -8,9 +8,9 @@
 {% block content %}
   <section class="section">
     <div class="container">
-      {% if error %}
+      {% if form.errors %}
       <div class="notification is-danger is-light">
-        {{ error }}
+        Credenciales inválidas, inténtalo de nuevo
       </div>
       {% endif %}
 
@@ -41,6 +41,7 @@
           </div>
         </div>
 
+        <input type="hidden" name="next" value="{{ next }}">
       </form>      
     </div>
   </section>

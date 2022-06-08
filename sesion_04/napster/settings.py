@@ -108,3 +108,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Authentication
 
 LOGIN_URL = "users:login"
+LOGIN_REDIRECT_URL = "music:show_songs"
+LOGOUT_REDIRECT_URL = LOGIN_URL

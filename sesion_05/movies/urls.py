@@ -1,10 +1,13 @@
 """Movies app URL config"""
 
-from django.urls import path
+from rest_framework import routers
 
-from .views import list_movies
+from . import views
 
-app_name = "movies"
-urlpatterns = [
-    path("movies/", list_movies, name="list"),
-]
+router = routers.SimpleRouter()
+router.register(r'movies', views.MovieViewSet)
+router.register(r'directors', views.DirectorViewSet)
+
+
+app_name = 'movies'
+urlpatterns = router.urls

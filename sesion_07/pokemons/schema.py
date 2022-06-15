@@ -1,6 +1,3 @@
-from asyncio.sslproto import _DO_HANDSHAKE
-from dataclasses import asdict
-from ssl import ALERT_DESCRIPTION_BAD_CERTIFICATE_HASH_VALUE
 import graphene
 from graphene_django import DjangoObjectType
 
@@ -35,7 +32,28 @@ class CreateTypeMutation(graphene.Mutation):
 
 
 class CreatePokemonMutation(graphene.Mutation):
-    pass
+    class Arguments:
+        name = graphene.String(required=True)
+        type = graphene.String(required=True)
+        number = graphene.Int(required=True)
+
+    pokemon = graphene.Field(PokemonType)
+
+    @classmethod
+    def mutate(cls, root, info, name, type, number):
+        if Pokemon.objects.filter(number=number).exists():
+            raise ValueError("No puede haber dos Pokémon con el mismo número")
+
+        type_queryset = Type.objects.filter(name__iexact=type.strip())
+        if type_queryset.exists():
+            type_object = type_queryset.get()
+        else:
+            type_object = Type.objects.create(name=type.strip())
+
+        pokemon = Pokemon.objects.create(
+            name=name, type=type_object, number=number
+        )
+        return CreatePokemonMutation(pokemon=pokemon)
 
 
 class Query:
@@ -51,3 +69,4 @@ class Query:
 
 class Mutation:
     create_type = CreateTypeMutation.Field()
+    create_pokemon = CreatePokemonMutation.Field()
